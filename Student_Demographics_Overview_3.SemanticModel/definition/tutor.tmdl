@@ -1,0 +1,72 @@
+table tutor
+	lineageTag: ecc9adcd-92ac-4821-aed8-a978b864b5d5
+
+	column 'Course id'
+		dataType: string
+		lineageTag: 8102d0df-b615-4909-ab3d-9cd2c739ba12
+		summarizeBy: none
+		sourceColumn: Course id
+		annotation SummarizationSetBy = Automatic
+
+	column tutor_id
+		dataType: string
+		lineageTag: a56d60fc-9981-45a0-a57b-cc0294d4fb94
+		summarizeBy: none
+		sourceColumn: tutor_id
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: c82214a0-59fb-4eea-9480-32bdb0283fd7
+		summarizeBy: none
+		sourceColumn: name
+		annotation SummarizationSetBy = Automatic
+
+	column gender
+		dataType: string
+		lineageTag: 8e1415d4-80c0-49bc-962e-92135c804858
+		summarizeBy: none
+		sourceColumn: gender
+		annotation SummarizationSetBy = Automatic
+
+	column date_of_birth
+		dataType: datetime
+		lineageTag: dd6a46b4-8d3e-44ee-be96-98dfb7738f6b
+		summarizeBy: none
+		sourceColumn: date_of_birth
+		annotation SummarizationSetBy = Automatic
+		annotation UnderlyingDateTimeDataType = Time
+
+	column email
+		dataType: string
+		lineageTag: b90a48e9-966c-4ee3-8abc-eb68f74656de
+		summarizeBy: none
+		sourceColumn: email
+		annotation SummarizationSetBy = Automatic
+
+	column department
+		dataType: string
+		lineageTag: db050d86-25ea-4dfa-a1d4-8fc1b3dae11f
+		summarizeBy: none
+		sourceColumn: department
+		annotation SummarizationSetBy = Automatic
+
+	column specialization
+		dataType: string
+		lineageTag: d68b1b24-c86d-4ede-9edf-ff1bde431144
+		summarizeBy: none
+		sourceColumn: specialization
+		annotation SummarizationSetBy = Automatic
+
+    partition tutor = m
+        mode: import
+        source =
+                let
+                    Source = Databricks.Catalogs("adb-201068313543333.13.azuredatabricks.net", "/sql/1.0/warehouses/b0a66af24d7401a1", [Catalog="reportinghub", Database=null, EnableAutomaticProxyDiscovery=null]),
+                    reportinghub_Database = Source{[Name="reportinghub",Kind="Database"]}[Data],
+                    default_Schema = reportinghub_Database{[Name="default",Kind="Schema"]}[Data],
+                    tutor_Table = default_Schema{[Name="tutor",Kind="Table"]}[Data]
+                in
+                    tutor_Table
+
+    annotation PBI_ResultType = Table

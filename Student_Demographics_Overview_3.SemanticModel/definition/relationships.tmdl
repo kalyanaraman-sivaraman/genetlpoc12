@@ -1,0 +1,6 @@
+relationship 37cb0a9b-a6eb-4031-b93c-6a9cf8431588
+    fromColumn: tutor.'Course id'
+    toColumn: course.'Course id (course)'
+relationship b55d9793-92e4-4f8a-8bd1-fc2af5a701f4
+    fromColumn: course.'code'
+    toColumn: student.'code (student)'
