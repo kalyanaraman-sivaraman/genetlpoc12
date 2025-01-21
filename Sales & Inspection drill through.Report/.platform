@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Sales & Inspection drill through"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0557e2bc-bac4-a733-4c60-23d0bc508fac"
+  }
+}
